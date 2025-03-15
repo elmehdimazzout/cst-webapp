@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}اضافة{% endblock %}
+{% block TitlePage %}إضافة نزيل جديد{% endblock %}
+
+{% block content %}
+<style>
+    table td {
+        width: 200px; /* عرض كل خلية في الجدول */
+    }
+    input, select, textarea {
+        width: 300px !important; /* عرض جميع الحقول */
+        padding: 3px;
+    }
+</style>
+    <div class="add">
+        
+        <div class="card-body">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <div>
+                   تنبيه:
+                   المرجو إدخال البيانات بشكل صحيح وواضح لتفادي أي أخطاء في المعالجة وضمان دقة المعلومات المسجلة.
+                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+            </div>            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <table class="table table-bordered">
+                    <tr class="table-primary">
+                        <th colspan="2" class="text-center"> المعلومات الشخصية</th>
+
+                    </tr>
+                    <tr>
+                        <td>الاسم الكامل:</td>
+                        <td>{{ form.nom_prenom }}</td>
+                    </tr>
+                    <tr>
+                        <td>الجنس</td>
+                        <td>{{ form.sexe }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>رقم بطاقة التعريف</td>
+                        <td>{{ form.Cin }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>تاريخ الميلاد</td>
+                        <td>{{ form.date_naissance }}</td>
+                    </tr>
+                    <tr>
+                        <td>مكان الميلاد</td>
+                        <td>{{ form.lieu_naissance }}</td>
+                    </tr>
+                    <tr>
+                        <td>الحالة الاجتماعية</td>
+                        <td>{{ form.etat_matrimonial }}</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <th colspan="2" class="text-center">المعلومات العائلية</th>
+                    </tr>
+
+                    <tr>
+                        <td>اسم الأب</td>
+                        <td>{{ form.nom_pere }}</td>
+                    </tr>
+                    <tr>
+                        <td>اسم الأم</td>
+                        <td>{{ form.nom_mere }}</td>
+                    </tr>
+                    <tr>
+                        <td>العنوان</td>
+                        <td>{{ form.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <td>رقم الهاتف</td>
+                        <td>{{ form.telephone }}</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <th colspan="2" class="text-center">معلومات التوجيه</th>
+                    </tr>
+                    <tr>
+                        <td>تاريخ الدخول</td>
+                        <td>{{ form.date_entree }}</td>
+                    </tr>
+                    <tr>
+                        <td>مصدر التوجيه</td>
+                        <td>{{ form.source_orientation }}</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <th colspan="2" class="text-center">الحالة الصحية</th>
+
+                    </tr>
+                    <tr>
+                                <td><label>إعاقة حركية</label></td>
+                                <td>{{ form.handicap_moteur }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>أصم وأبكم</label></td>
+                                <td>{{ form.sourd_muet }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>ضعف البصر</label></td>
+                                <td>{{ form.deficience_visuelle }}</td>
+                            </tr>
+
+                            <tr>
+                                <td><label>أطراف مبتورة</label></td>
+                                <td>{{ form.membres_amputes }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>مرض نفسي</label></td>
+                                <td>{{ form.maladie_mentale }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>داء السكري</label></td>
+                                <td>{{ form.diabete }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>ارتفاع ضغط الدم</label></td>
+                                <td>{{ form.pression_arterielle }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>أورام</label></td>
+                                <td>{{ form.tumeurs }}</td>
+                            </tr>
+                            <tr>
+                                <td><label>السل</label></td>
+                                <td>{{ form.tuberculose }}</td>
+                            </tr>
+                    </tr>
+
+                    <tr class="table-primary">
+                        <th colspan="2" class="text-center"> الإقامة والخروج</th>
+                    </tr>
+                    <tr>
+                        <td>جناح المبيت</td>
+                        <td>{{ form.suite_couchage }}</td>
+                    </tr>
+                    <tr>
+                        <td>الغرفة</td>
+                        <td>{{ form.chambre }}</td>
+                    </tr>
+                    <tr>
+                        <td>تاريخ المغادرة المركز</td>
+                        <td>{{ form.date_sortie }}</td>
+                    </tr>
+                    <tr>
+                        <td>سبب المغادرة</td>
+                        <td>{{ form.raison_depart }}</td>
+                    </tr>
+
+                    <tr class="table-danger text-center" >
+                        <th colspan="2"> الوفاة</th>
+                    </tr>
+                    <tr>
+                        <td>تاريخ الوفاة</td>
+                        <td>{{ form.date_deces }}</td>
+                    </tr>
+                    <tr>
+                        <td>مكان الوفاة</td>
+                        <td>{{ form.lieu_deces }}</td>
+                    </tr>
+                </table>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'index' %}" class="btn btn-secondary">إلغاء</a>
+                    <button type="submit" class="btn btn-success">حفظ</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

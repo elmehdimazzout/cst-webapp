@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}سجل النزلاء {% endblock %}
+{% block TitlePage %}سجل النزلاء {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'style/jquery.dataTables.min.css' %}">
+
+
+<div class="container mt-4">
+    <table id="myTable" class="table  table-hover  ">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">الإسم الكامل</th>
+            <th scope="col">الجنس</th>
+            <th scope="col">تاريخ الإزدياد</th>
+            <th scope="col">مكان المبيت</th>
+            <th scope="col">تاريخ الدخول</th>
+            <th scope="col">التفاصيل</th>
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.nom_prenom }}</td>
+                <td>{{ patient.sexe }}</td>
+                <td>{{ patient.date_naissance|date:"d/m/Y" }}</td>
+                <td>{{ patient.suite_couchage }}</td>
+                <td>{{ patient.date_entree|date:"d/m/Y" }}</td>
+                <td>
+                <a href="{% url 'patient_detail' patient.id %}"  class="btn btn-primary btn-sm"><i class="fa-solid fa-address-card"></i></a>
+                <a type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-file-pdf"></i></a>
+                <a type="button" class="btn btn-secondary btn-sm"><i class="fa-solid fa-print"></i></a>
+
+
+                </td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    
+</div>
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable({
+            "paging": true,
+            "pageLength": 15,
+            "lengthChange": false,
+            "language": {
+                "paginate": {
+                    "previous": "السابق",
+                    "next": "التالي"
+                },
+                "search": "بحث:",
+                "info": "عرض _START_ إلى _END_ من أصل _TOTAL_ سجل"
+            }
+        });
+    });
+</script>
+{% endblock %}

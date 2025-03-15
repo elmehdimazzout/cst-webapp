@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@200..1000&display=swap');
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Almarai';
+    src: url('../fonts/Almarai-Bold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../fonts/Cairo-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* ✅ تطبيق الخطوط على الموقع */
+
+body {
+    font-family:  'Cairo','Almarai', sans-serif;
+}
+
+@import "node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: Cairo , Almarai;
+    
+}
+body{
+    display: flex;
+}
+
+.sidebar{
+    position: sticky;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 260px;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    background: rgba(113, 99, 186, 255);
+}
+
+.logo img{
+    width: 200px;
+    margin: 5px;
+}
+.menu{
+    height: 88%;
+    position: relative;
+    list-style: none;
+    position: 0;
+
+}
+.menu li{
+    padding: 0.7rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+.menu li:hover{
+    background: #e0e0e058;
+}
+.menu a{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.menu a span{
+    overflow: hidden;
+}
+.menu a i{
+    font-size: 1.2rem;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+/* main body */
+.main--content{
+    position: relative;
+    background: #ebebe9e9;
+    width: 90%;
+    padding: 1rem;
+}
+.header--wrapper img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 10px;
+}
+.header--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.header--title{
+    color: black;
+}
+.user--info{
+    display: flex;
+    align-items: center;
+    gap: 1;
+}
+.search--box{
+    background: rgb(237, 237, 237);
+    border-radius: 15px;
+    color: rgba(113, 99, 186, 255);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+.search--box input{
+    background: transparent;
+    padding: 3px;
+}
+.search--box i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition:  all 0.5s ease-out;
+}
+.search--box i:hover{
+    transform: scale(1.1);
+}
+/*  العمر */
+

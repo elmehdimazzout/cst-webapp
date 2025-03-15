@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Dashbord{% endblock %}
+{% block TitlePage %}لوحة التحكم {% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row text-center">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-person-dress"></i> النساء</h5>
+                    <p class="card-text fs-4">{{ women_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-person"></i> الرجال</h5>
+                    <p class="card-text fs-4">{{ men_count }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-person-cane"></i> المسنون</h5>
+                    <p class="card-text fs-4">{{seniors_count}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-people-roof"></i></i> المجموع</h5>
+                    <p class="card-text fs-4">{{total_count}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row text-center">
+
+            
+        </div>
+    </div>
+
+
+</div>{% endblock %}

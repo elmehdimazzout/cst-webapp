@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}سجل المغاديون  App{% endblock %}
+{% block TitlePage %}سجل المغادرين {% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="text-center">سجل المغادرين</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>رقم التعريفي</th>
+                    <th>الاسم الكامل</th>
+                    <th>تاريخ المغادرة</th>
+                    <th>سبب المغادرة</th>
+                    <th>بمرافقة</th>
+                    <th>الورقة التقنية لبيانات المغادر</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.id }}</td>
+                    <td>{{ patient.nom_prenom }}</td>
+                    <td>{{ patient.date_sortie|date:"d/m/Y" }}</td>
+                    <td>{{ patient.raison_depart }}</td>
+                    <td>{{ patient.son_compagnon }}</td>
+                    <td><a href="{% url 'patient_detail' patient.id %}"  class="btn btn-primary btn-sm"><i class="fa-solid fa-address-card"></i>الورقة التقنية   </a></td>
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">لا يوجد مرضى غادروا بعد</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

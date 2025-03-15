@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}حدف {% endblock %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <h1>تأكد من الحدف</h1>
+
+
+    <div class="container mt-5">
+        <div class="text-center m-3">
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="buttons">
+                    <button type="submit" class="delete-btn">🗑️ تأكيد الحذف</button>
+                    <a href="{% url 'index' %}" class="cancel-btn">إلغاء</a>
+                </div>
+            </form>
+        
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-header  text-center">البيانات الخاصة بالنزيل</h5>
+                <table class="table  ">
+                    <tbody>
+                        <tr>
+                            <th>الإسم الكامل</th>
+                            <td>{{ patient.nom_prenom }}</td>
+                        </tr>
+                        <tr>
+                            <th>رقم بطاقة التعريف</th>
+                            <td>{{ patient.Cin }}</td>
+                        </tr>
+                        <tr>
+                            <th>الجنس</th>
+                            <td>{{ patient.sexe }}</td>
+                            <th>الحالة العائلية:</th>
+                            <td>{{ patient.etat_matrimonial }}</td>
+                        </tr>
+                        <tr>
+                            <th>تاريخ الإزدياد</th>
+                            <td>{{ patient.date_naissance|date:"d/m/Y" }}</td>
+                            <th>السن:</th>
+                            <td>{{ patient.date_naissance|timesince }}</td>
+
+                        </tr>
+                        <tr>
+                            <th>مكان الإزدياد</th>
+                            <td>{{ patient.lieu_naissance }}</td>
+                        </tr>
+                        <tr>
+                            <th>العنوان</th>
+                            <td>{{ patient.adresse }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                    <h5 class="card-header  text-center">البيانات العائلة</h5>
+                    <table class="table  ">
+                        <tbody>
+                            <tr>
+                                <th>إسم الأب</th>
+                                <td>{{ patient.nom_pere }}</td>
+                                <th>إسم الأم</th>
+                                <td>{{ patient.nom_mere }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>رقم العاتف</th>
+                                <td>{{ patient.telephone }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h5 class="card-header  text-center">المبيت  </h5>
+                    <table class="table  ">
+                        <tbody>
+                            <tr>
+                                <th>مكان المبيت </th>
+                                <td>{{ patient.suite_couchage }}</td>
+                                <th>الغرفة  </th>
+                                <td>{{ patient.chambre }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <h5 class="card-header  text-center">الدخول - المغادرة - الوفاة  </h5>
+                    <table class="table  ">
+                        <tbody>
+                            <tr>
+                                <th>تاريخ الدخول </th>
+                                <td>{{ patient.date_entree|date:"d/m/Y" }}</td>
+                                <th>المصدر  </th>
+                                <td>{{ patient.source_orientation }}</td>
+                                <th>سبب توجيه  </th>
+                                <td>{{ patient.raison_direction }}</td>
+                            </tr>
+                            <tr>
+                                <th>تاريخ المغادرة </th>
+                                <td>{{ patient.date_entree|date:"d/m/Y" }}</td>
+                                <th>سبب المغادرة  </th>
+                                <td>{{ patient.raison_depart }}</td>
+                                <th>المرافق</th>
+                                <td>{{ patient.son_compagnon }}</td>
+
+                            </tr>
+                            <tr>
+                                <th>تاريخ الوفاة </th>
+                                <td>{{ patient.date_deces|date:"d/m/Y" }}</td>
+                                <th>مكان الوفاة   </th>
+                                <td>{{ patient.lieu_deces }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 class="card-header  text-center">الحالة الصحية    </h5>
+                    <table class="table table table-bordered ">
+                        <thead>
+                            <tr>                    
+                              <th scope="col">مرض نفسي </th>
+                              <th scope="col">مرض السكري </th>
+                              <th scope="col">ضغط الدم 	</th>
+                              <th scope="col">السل 	</th>
+                              <th scope="col">مرض السرطان </th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ patient.maladie_mentale }}</td>
+                                <td>{{ patient.diabete }}</td>
+                                <td>{{ patient.pression_arterielle }}</td>
+                                <td>{{ patient.tuberculose }}</td>
+                                <td>{{ patient.tumeurs }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <h5 class="card-header  text-center">إعاقة جسدية   </h5>
+                    <table class="table table table-bordered ">
+                        <thead>
+                            <tr>
+                              <th scope="col">إعاقة حركية</th>
+                              <th scope="col">أصم وأبكم	</th>
+                              <th scope="col">ضعف البصر	</th>
+                              <th scope="col">أطراف مبتورة</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ patient.handicap_moteur }}</td>
+                                <td>{{ patient.sourd_muet }}</td>
+                                <td>{{ patient.deficience_visuelle }}</td>
+                                <td>{{ patient.membres_amputes }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $(".delete-btn").click(function(event){
+                event.preventDefault();  // ❌ منع الحذف التلقائي
+                
+                var patientId = $(this).data("id");
+                var row = $("#patient-row-" + patientId);
+    
+                // إظهار نافذة التأكيد
+                Swal.fire({
+                    title: "هل أنت متأكد؟",
+                    text: "لن تتمكن من التراجع عن هذا الإجراء!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "نعم، احذف!",
+                    cancelButtonText: "إلغاء"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // ✅ تنفيذ الحذف فقط بعد الضغط على "نعم"
+                        $.ajax({
+                            url: "/" + patientId + "/delete/",
+                            type: "POST",
+                            headers: { "X-CSRFToken": "{{ csrf_token }}" },
+                            success: function(response) {
+                                if(response.success) {
+                                    row.fadeOut(500, function() { $(this).remove(); });
+                                    Swal.fire("تم الحذف!", "تم حذف المريض بنجاح.", "success");
+                                }
+                            },
+                            error: function() {
+                                Swal.fire("خطأ!", "حدث خطأ أثناء الحذف!", "error");
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+        
+    
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}رفع البيانات App{% endblock %}
+{% block TitlePage %} رفع البيانات{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    <div class="alert alert-danger" role="alert">
+        ⚠️ <strong>تحذير هام!</strong> قد تؤدي هذه الخطوة إلى <strong>فقدان البيانات</strong> أو <strong>تلفها</strong>. يرجى التأكد قبل رفع الملف.
+    </div>
+    
+    <h2>رفم ملف البيانات</h2>
+    {% csrf_token %}
+    <input type="file" name="excel_file" class="form-control mb-3" accept=".xlsx">
+    <button type="submit" class="btn btn-primary">رفع البيانات</button>
+</form>
+
+{% if messages %}
+    <div class="mt-3">
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
